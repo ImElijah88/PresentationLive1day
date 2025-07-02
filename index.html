@@ -6,11 +6,10 @@
     <title>Live One Day Project: Comprehensive Overview</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Removed Inter font link as Cambria is now preferred, relying on system font or serif fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Cambria', serif; /* Changed font to Cambria for the entire body */
-            font-size: 1.125rem; /* Increased base font size for the entire body */
+            font-family: 'Inter', sans-serif;
             background-color: #0A192F; /* New dark background color */
             color: #E0E0E0; /* Default text color for dark background */
         }
@@ -33,16 +32,14 @@
             height: 0;
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
-            border-top: 15px solid #003B73; /* Base color */
+            border-top: 15px solid #003B73;
             margin: 0 auto;
-            /* Removed transition here as animation handles it */
         }
         .flow-line {
             height: 20px;
             width: 2px;
-            background-color: #003B73; /* Base color */
+            background-color: #003B73;
             margin: 0 auto;
-            /* Removed transition here as animation handles it */
         }
         .flow-horizontal-line {
             height: 2px;
@@ -54,7 +51,7 @@
             height: 20px;
             background-color: #003B73;
         }
-        /* Pulsate animation for general icons */
+        /* Pulsate animation for icons */
         @keyframes pulsate {
             0% {
                 transform: scale(1);
@@ -72,38 +69,6 @@
         .pulsating-icon {
             animation: pulsate 1.5s infinite ease-in-out;
         }
-
-        /* Golden Pulsate animation for arrows/lines */
-        @keyframes golden-pulsate {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-                filter: brightness(1);
-                border-top-color: #003B73; /* Explicitly set initial color for arrows */
-                background-color: #003B73; /* Explicitly set initial color for lines */
-                box-shadow: none; /* No shadow at start/end */
-            }
-            50% {
-                transform: scale(1.1); /* More noticeable scale */
-                opacity: 1; /* Fully opaque for brightness */
-                filter: brightness(2.5); /* Much brighter effect for stronger glow */
-                border-top-color: gold; /* Explicitly gold for arrows */
-                background-color: gold; /* Explicitly gold for lines */
-                box-shadow: 0 0 20px gold, 0 0 40px gold; /* Stronger golden glow */
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-                filter: brightness(1);
-                border-top-color: #003B73; /* Return to initial color for arrows */
-                background-color: #003B73; /* Return to initial color for lines */
-                box-shadow: none; /* No shadow at start/end */
-            }
-        }
-        .golden-pulsating-flow {
-            animation: golden-pulsate 2s infinite ease-in-out;
-        }
-
 
         /* Hover effect for phase text */
         .phase-content-overlay {
@@ -130,26 +95,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('image8.png'); /* Background image for entry screen */
-            background-size: cover;
-            background-position: center;
+            background-color: #0A192F;
             display: flex; /* Always show entry screen initially */
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 1rem;
             overflow-y: auto; /* Allow scrolling for long terms */
-        }
-        /* Overlay for entry screen background */
-        #entry-screen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
-            z-index: -1; /* Behind content */
         }
 
         #entry-screen-content {
@@ -171,13 +123,12 @@
             padding: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 1.5rem;
-            font-size: 1.125rem; /* Consistent with new body font size */
+            font-size: 0.9rem;
             line-height: 1.6;
             color: #BFD7ED;
             max-height: 40vh; /* Make terms scrollable if too long */
             overflow-y: auto;
             border: 1px solid #003B73;
-            font-family: 'Cambria', serif; /* Changed font to Cambria */
         }
 
         #acknowledgement-checkbox {
@@ -207,24 +158,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('image8.png'); /* Background image for email modal */
-            background-size: cover;
-            background-position: center;
+            background-color: rgba(0, 0, 0, 0.7);
             display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
             z-index: 1001; /* Above entry screen */
-        }
-        /* Overlay for email modal background */
-        #email-modal::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for modal */
-            z-index: -1; /* Behind content */
         }
 
         #email-modal-content {
@@ -249,7 +187,7 @@
             border: 1px solid #003B73;
             background-color: #0D1C2E;
             color: #E0E0E0;
-            font-size: 1rem; /* Kept at 1rem for input fields, common practice */
+            font-size: 1rem;
         }
         #email-modal-content input[type="text"]::placeholder,
         #email-modal-content input[type="email"]::placeholder {
@@ -270,7 +208,7 @@
 
         #modal-message {
             margin-top: 1rem;
-            font-size: 1rem; /* Increased font size for modal messages */
+            font-size: 0.9rem;
             color: #BFD7ED;
         }
 
@@ -340,7 +278,6 @@
 </head>
 <body class="bg-[#0A192F] text-[#E0E0E0]">
 
-    <!-- Entry Screen -->
     <div id="entry-screen">
         <div id="entry-screen-content">
             <h2 class="text-3xl font-bold text-[#BFD7ED] mb-4 text-center">Important: Terms & Conditions for Access</h2>
@@ -369,7 +306,6 @@
         </div>
     </div>
 
-    <!-- Email/Name Modal -->
     <div id="email-modal" class="hidden">
         <form id="email-modal-content" action="https://formspree.io/f/xeokdaod" method="POST">
             <button type="button" class="close-button" id="close-modal-button">&times;</button>
@@ -382,7 +318,6 @@
         </form>
     </div>
 
-    <!-- Main Content (initially hidden) -->
     <div id="main-content" class="hidden">
         <header class="bg-[#003B73] text-white p-8 text-center">
             <h1 class="text-4xl md:text-6xl font-black tracking-tight">LIVE ONE DAY PROJECT</h1>
@@ -401,32 +336,32 @@
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">🚶</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Unrivaled Immersion</h4>
-                        <p class="text-gray-300 text-base">The Show Host genuinely "lives a day" in a local's reality, entirely without personal funds and at their mercy, offering profound authentic engagement.</p>
+                        <p class="text-gray-300 text-sm">The Show Host genuinely "lives a day" in a local's reality, entirely without personal funds and at their mercy, offering profound authentic engagement.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">🎬</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Sophisticated Hybrid Storytelling</h4>
-                        <p class="text-gray-300 text-base">Blends aspirational "gentleman lifestyle" segments, intimate in-car interviews, raw first-person daily immersion, and deeply reflective post-experience insights.</p>
+                        <p class="text-gray-300 text-sm">Blends aspirational "gentleman lifestyle" segments, intimate in-car interviews, raw first-person daily immersion, and deeply reflective post-experience insights.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">🤝</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Ethical Reciprocity</h4>
-                        <p class="text-gray-300 text-base">Commitment to ethically compensate or benefit participants, ensuring respectful collaboration.</p>
+                        <p class="text-gray-300 text-sm">Commitment to ethically compensate or benefit participants, ensuring respectful collaboration.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">🤵</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Distinct Show Host Persona</h4>
-                        <p class="text-gray-300 text-base">The "gentleman" aesthetic, defined by intentional living and profound respect, sets a unique brand identity for the Show Host.</p>
+                        <p class="text-gray-300 text-sm">The "gentleman" aesthetic, defined by intentional living and profound respect, sets a unique brand identity for the Show Host.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">📱</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Multi-Platform Content</h4>
-                        <p class="text-gray-300 text-base">Strategic use of short-form (TikTok, Reels) and long-form (YouTube, streaming) content.</p>
+                        <p class="text-gray-300 text-sm">Strategic use of short-form (TikTok, Reels) and long-form (YouTube, streaming) content.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-4 rounded-lg text-center">
                         <div class="text-4xl text-[#BFD7ED] mb-2 pulsating-icon">🔗</div>
                         <h4 class="font-semibold text-lg text-[#BFD7ED]">Seamless Integrated Sponsorships</h4>
-                        <p class="text-gray-300 text-base">Organic product placements that resonate naturally with the content.</p>
+                        <p class="text-gray-300 text-sm">Organic product placements that resonate naturally with the content.</p>
                     </div>
                 </div>
             </div>
@@ -435,23 +370,23 @@
         <section class="mb-12">
             <div class="bg-[#003B73] rounded-lg shadow-md p-6 text-white">
                 <h2 class="text-2xl font-bold text-[#BFD7ED] mb-4 text-center">The 'Live One Day' Show Host Persona</h2>
-                <img src="image9.png" alt="Show Host Persona Image" class="w-full max-w-md mx-auto rounded-lg my-4">
+                <img src="https://placehold.co/600x300/FFC300/003B73?text=Show+Host+Persona+Image" alt="Placeholder image for Live One Day Show Host Persona" class="w-full max-w-md mx-auto rounded-lg my-4">
                 <p class="text-gray-300 text-center mb-6">The "gentleman" persona is central to the Show Host, defined by discipline, intention, and profound respect, rather than just appearance. It's about the process and care put into daily routines and interactions.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-[#1A2F4A] p-6 rounded-lg text-center">
                         <div class="text-5xl text-[#BFD7ED] mb-3 pulsating-icon">✨</div>
                         <h3 class="font-bold text-xl text-[#BFD7ED]">Intentionality in Preparation</h3>
-                        <p class="text-gray-300 mt-2 text-base">Meticulous grooming, curated travel gear, and willingness to adopt locally-appropriate attire by the Show Host.</p>
+                        <p class="text-gray-300 mt-2">Meticulous grooming, curated travel gear, and willingness to adopt locally-appropriate attire by the Show Host.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-6 rounded-lg text-center">
                         <div class="text-5xl text-[#BFD7ED] mb-3 pulsating-icon">🤝</div>
                         <h3 class="font-bold text-xl text-[#BFD7ED]">Respectful Adaptation & Engagement</h3>
-                        <p class="text-gray-300 mt-2 text-base">Show Host embracing local customs, food, and routines by living without personal resources, active listening during interviews, and maintaining a gracious, engaged presence.</p>
+                        <p class="text-gray-300 mt-2">Show Host embracing local customs, food, and routines by living without personal resources, active listening during interviews, and maintaining a gracious, engaged presence.</p>
                     </div>
                     <div class="bg-[#1A2F4A] p-6 rounded-lg text-center">
                         <div class="text-5xl text-[#BFD7ED] mb-3 pulsating-icon">🎯</div>
                         <h3 class="font-bold text-xl text-[#BFD7ED]">Discipline in Action</h3>
-                        <p class="text-gray-300 mt-2 text-base">Show Host's dedication to high-quality content, rigorous organization, and consistent effort throughout the global journey.</p>
+                        <p class="text-gray-300 mt-2">Show Host's dedication to high-quality content, rigorous organization, and consistent effort throughout the global journey.</p>
                     </div>
                 </div>
             </div>
@@ -465,67 +400,67 @@
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+1:+Planning'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 1: Pre-Production & Planning</h3>
-                            <p class="text-white text-base mt-1">Engaging local guide/fixer (for Immersion Host identification, itinerary, local attire sourcing), finalizing Show Host agreement, preparing interview questions, and selecting a pre-prepared gift for the Immersion Host family.</p>
+                            <p class="text-white text-sm mt-1">Engaging local guide/fixer (for Immersion Host identification, itinerary, local attire sourcing), finalizing Show Host agreement, preparing interview questions, and selecting a pre-prepared gift for the Immersion Host family.</p>
                         </div>
                     </div>
-                    <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div> <!-- Rotated for downward arrow -->
+                    <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+2:+Arrival'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 2: Arrival & Show Host Lifestyle Vlog</h3>
-                            <p class="text-white text-base mt-1">Initial entry, settling in, and showcasing the Show Host's disciplined routines. This phase includes artfully filmed sequences of the Show Host's "getting ready" routine – perfect for integrated product placements.</p>
+                            <p class="text-white text-sm mt-1">Initial entry, settling in, and showcasing the Show Host's disciplined routines. This phase includes artfully filmed sequences of the Show Host's "getting ready" routine – perfect for integrated product placements.</p>
                         </div>
                     </div>
-                    <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+3:+Interviews'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 3: Car Ride Interviews</h3>
-                            <p class="text-white text-base mt-1">Creating a "mobile studio" to capture the Immersion Host's life story. Traveling with the Immersion Host, conducting in-depth interviews. The guide may drive in some situations to allow the Show Host to focus on the interview.</p>
+                            <p class="text-white text-sm mt-1">Creating a "mobile studio" to capture the Immersion Host's life story. Traveling with the Immersion Host, conducting in-depth interviews. The guide may drive in some situations to allow the Show Host to focus on the interview.</p>
                         </div>
                     </div>
-                    <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+4:+Immersion'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 4: 24 Hours Inside Their Shoes (Immersion)</h3>
-                            <p class="text-white text-base mt-1">The core, resource-less immersion experience. The Show Host wears only the locally-prepared attire, carries bare minimum hygiene essentials and sleepwear. The Show Host experiences the day as the local Immersion Host does, capturing interesting moments, aiming to inspire.</p>
+                            <p class="text-white text-sm mt-1">The core, resource-less immersion experience. The Show Host wears only the locally-prepared attire, carries bare minimum hygiene essentials and sleepwear. The Show Host experiences the day as the local Immersion Host does, capturing interesting moments, aiming to inspire.</p>
                         </div>
                     </div>
-                    <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+5:+Debrief'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 5: Post-Immersion Interview & Debrief</h3>
-                            <p class="text-white text-base mt-1">Immediate, raw reflection on the immersion. After being picked up by the guide, the Show Host returns to the hotel. A "fresh out of the oven" interview with the Show Host is filmed, capturing immediate thoughts and emotional takeaways. The Show Host expresses gratitude and potentially gives the pre-prepared gift to the Immersion Host family.</p>
+                            <p class="text-white text-sm mt-1">Immediate, raw reflection on the immersion. After being picked up by the guide, the Show Host returns to the hotel. A "fresh out of the oven" interview with the Show Host is filmed, capturing immediate thoughts and emotional takeaways. The Show Host expresses gratitude and potentially gives the pre-prepared gift to the Immersion Host family.</p>
                         </div>
                     </div>
-                    <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div>
+                    <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+6:+Post-Production'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 6: Post-Production & Workflow (Wife's Role)</h3>
-                            <p class="text-white text-base mt-1">Efficiently transforming raw footage into polished episodes for multi-platform deployment. Show Host uploads video to cloud storage. Wife uses high-performance laptop to edit and prepare content.</p>
+                            <p class="text-white text-sm mt-1">Efficiently transforming raw footage into polished episodes for multi-platform deployment. Show Host uploads video to cloud storage. Wife uses high-performance laptop to edit and prepare content.</p>
                         </div>
                     </div>
-                     <div class="flow-arrow golden-pulsating-flow"></div>
-                    <div class="flow-line golden-pulsating-flow"></div>
-                    <div class="flow-arrow golden-pulsating-flow" style="transform: rotate(180deg);"></div>
+                     <div class="flow-arrow"></div>
+                    <div class="flow-line"></div>
+                    <div class="flow-arrow"></div>
 
                     <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+7:+Departure'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 7: Departure & Ongoing Guide Relationship</h3>
-                            <p class="text-white text-base mt-1">Concluding the visit, preparing for the next journey, and strengthening bonds with the local guide, who may travel with the team to the next destination.</p>
+                            <p class="text-white text-sm mt-1">Concluding the visit, preparing for the next journey, and strengthening bonds with the local guide, who may travel with the team to the next destination.</p>
                         </div>
                     </div>
                 </div>
@@ -537,205 +472,76 @@
                 <h2 class="text-2xl font-bold text-[#4CAF50] mb-6 text-center">Key Resources & Equipment: High-Tech Infrastructure</h2>
                 <p class="text-gray-300 text-center mb-8">A streamlined overview of the critical gear and services powering the project's success, presented as a sophisticated operational framework.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Travel & Mobility -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">✈️</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Travel & Mobility Systems</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Optimized Flight & Accommodation Logistics</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Advanced Ground Transportation Networks</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Secure & Intelligent Luxury Luggage</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Optimized Flight & Accommodation Logistics</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Advanced Ground Transportation Networks</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Secure & Intelligent Luxury Luggage</li>
                         </ul>
                     </div>
-                    <!-- Show Host Gentleman Kit -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">🎩</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Show Host Gentleman Protocol</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Precision-Tailored Attire Systems</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Integrated Wearable Tech & Personal Scent</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Elite Grooming & Footwear Modules</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Precision-Tailored Attire Systems</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Integrated Wearable Tech & Personal Scent</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Elite Grooming & Footwear Modules</li>
                         </ul>
                     </div>
-                    <!-- Core Filming Gear -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">🎥</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Core Immersive Capture Units</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> High-Definition Mobile Recording Units</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> First-Person POV Optical Systems</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Broadcast-Quality Audio Acquisition</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Adaptive Illumination Solutions</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> High-Definition Mobile Recording Units</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> First-Person POV Optical Systems</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Broadcast-Quality Audio Acquisition</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Adaptive Illumination Solutions</li>
                         </ul>
                     </div>
-                    <!-- Mobile Studio & Communication -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">🛰️</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Mobile Command & Comm. Hub</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Secure Vehicle Mounting & Display Interface</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Encrypted Short-Range Comms (Off-Grid)</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Secure Vehicle Mounting & Display Interface</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Encrypted Short-Range Comms (Off-Grid)</li>
                         </ul>
                     </div>
-                    <!-- Power & Connectivity -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">⚡</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Autonomous Power & Data Linkage</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Universal Energy Recharging Matrix</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Global High-Bandwidth Data Integration</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Universal Energy Recharging Matrix</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Global High-Bandwidth Data Integration</li>
                         </ul>
                     </div>
-                    <!-- Post-Production Suite -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">🖥️</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Centralized Post-Processing Core</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> High-Performance Editorial Workstation</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Distributed Cloud Data Repository</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Advanced Media Manipulation Software</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Precision Audio Monitoring</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> High-Performance Editorial Workstation</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Distributed Cloud Data Repository</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Advanced Media Manipulation Software</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Precision Audio Monitoring</li>
                         </ul>
                     </div>
-                    <!-- Software/Apps -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">📱</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Operational Software Interface</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Geo-Spatial Navigation & Translation AIs</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Multi-Platform Content Deployment Hubs</li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Geo-Spatial Navigation & Translation AIs</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Multi-Platform Content Deployment Hubs</li>
                         </ul>
                     </div>
-                    <!-- Human Resources -->
                     <div class="bg-[#1A2F4A] border border-[#2E4A6C] rounded-lg p-6 flex flex-col items-center text-center shadow-lg">
                         <div class="text-5xl text-[#4CAF50] mb-4 pulsating-icon">👥</div>
                         <h3 class="font-bold text-xl text-[#66B3FF] mb-2">Integrated Human Capital Nexus</h3>
-                        <ul class="list-none text-gray-300 space-y-1">
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Local Facilitator Network</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Immersive Experience Participant</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Lead Engagement Specialist (Show Host)</li>
-                            <li class="flex items-center text-base"><span class="mr-2 text-[#4CAF50]">•</span> Post-Production & Strategic Partner</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Financial Outlook: Cost Estimates</h2>
-                <p class="text-gray-600 text-center mb-6">Understanding the estimated capital and operational expenditures is crucial for project planning and sustainability. These are ground estimates and highly variable.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-xl text-[#FFC300] mb-2">Estimated One-Time Capital Expenditures (CapEx)</h3>
-                        <p class="text-gray-700 mb-4">These are the initial setup costs for essential equipment and luxury items.</p>
-                        <div class="chart-container">
-                            <canvas id="capexChart"></canvas>
-                        </div>
-                        <p class="text-gray-600 text-center mt-4">Total Estimated Initial CapEx: <span class="font-bold text-[#C70039]">$7,200 - $22,500+</span></p>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl text-[#FFC300] mb-2">Estimated Per-Episode Operating Expenses (OpEx)</h3>
-                        <p class="text-gray-700 mb-4">These are recurring costs for each episode produced, covering local support, travel, and production consumables.</p>
-                        <div class="chart-container">
-                            <canvas id="opexChart"></canvas>
-                        </div>
-                        <p class="text-gray-600 text-center mt-4">Total Estimated Per-Episode OpEx: <span class="font-bold text-[#C70039]">$2,545 - $11,180+</span></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-12">
-            <div class="bg-[#0D1C2E] rounded-lg shadow-xl p-6 text-white border border-[#2E4A6C]">
-                <h2 class="text-2xl font-bold text-[#4CAF50] mb-6 text-center">Legal & Contractual Framework: Immutable Protocols</h2>
-                <p class="text-gray-300 text-center mb-8">Establishing robust legal agreements is paramount for safeguarding intellectual property, ensuring ethical compliance, and facilitating seamless global operations.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-xl text-[#66B3FF] mb-4 border-b border-[#2E4A6C] pb-2">Mandatory Contractual Instruments</h3>
-                        <ul class="list-none text-gray-300 space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">📜</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Participant/Immersion Host Agreement & Release</h4>
-                                    <p class="text-base text-gray-400">Ensures explicit consent for filming, likeness utilization, and defines ethical compensation for all featured individuals.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🤝</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Local Fixer/Guide Engagement Protocol</h4>
-                                    <p class="text-base text-gray-400">Formalizes scope of services, remuneration terms, and intellectual property assignment for local support personnel.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">👨‍💻</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Core Team Member Accords</h4>
-                                    <p class="text-base text-gray-400">Defines roles, compensation structures, and 'Work for Hire' clauses for all production personnel, including the Show Host and Production Partner.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">💰</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Strategic Partnership & Sponsorship Mandate</h4>
-                                    <p class="text-base text-gray-400">Outlines deliverables, financial agreements, and brand integration approval rights with commercial collaborators.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">📍</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Location Authorization Forms</h4>
-                                    <p class="text-base text-gray-400">Secures necessary permissions for filming on private or restricted properties beyond the Immersion Host's domicile.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🎵</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Audio & Music Licensing Accords</h4>
-                                    <p class="text-base text-gray-400">Ensures legal utilization of all background audio and musical compositions within the episodic content.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl text-[#66B3FF] mb-4 border-b border-[#2E4A6C] pb-2">Critical Compliance Directives</h3>
-                        <ul class="list-none text-gray-300 space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🔒</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Intellectual Property Safeguards</h4>
-                                    <p class="text-base text-gray-400">Ensuring exclusive ownership of all generated footage, narratives, and derivative content.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">✅</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Universal Consent & Release Protocols</h4>
-                                    <p class="text-base text-gray-400">Mandatory acquisition of explicit consent from all identifiable individuals, with heightened scrutiny for minors.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🛡️</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Data Confidentiality & Privacy Mandates</h4>
-                                    <p class="text-base text-gray-400">Strict adherence to global data protection regulations for all sensitive information acquired.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🌐</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Jurisdictional Compliance & Regulatory Adherence</h4>
-                                    <p class="text-base text-gray-400">Full compliance with local filming permits, visa stipulations, and cultural sensitivity guidelines across all operational territories.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">💼</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Comprehensive Risk Mitigation & Insurance</h4>
-                                    <p class="text-base text-gray-400">Securing robust production and travel insurance policies to mitigate unforeseen liabilities.</p>
-                                </div>
-                            </li>
+                        <ul class="list-none text-gray-300 space-y-1 text-sm">
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Local Facilitator Network</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Immersive Experience Participant</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Lead Engagement Specialist (Show Host)</li>
+                            <li class="flex items-center"><span class="mr-2 text-[#4CAF50]">•</span> Post-Production & Strategic Partner</li>
                         </ul>
                     </div>
                 </div>
@@ -748,7 +554,6 @@
         <p class="text-gray-600">This infographic provides a comprehensive overview of the "Live One Day" project.</p>
     </footer>
 
-    <!-- Fixed Audio Player -->
     <div class="fixed-audio-player">
         <audio controls class="w-full">
             <source src="audio.mp3" type="audio/mpeg">
@@ -772,17 +577,13 @@
 
         // On page load, always show the entry screen first
         document.addEventListener('DOMContentLoaded', () => {
-            // ADMIN VIEW: Temporarily bypass NDA and email screens for direct viewing.
-            // To revert to normal client login flow:
-            // Change entryScreen.style.display = 'none'; to 'flex';
-            // Change mainContent.style.display = 'block'; to 'none';
-            entryScreen.style.display = 'none'; // Temporarily hide entry screen
+            entryScreen.style.display = 'flex'; // Ensure entry screen is visible
             emailModal.style.display = 'none'; // Ensure modal is hidden
-            mainContent.style.display = 'block'; // Temporarily show main content
-            // Reset checkbox and button state (though not visible now)
+            mainContent.style.display = 'none'; // Ensure main content is hidden
+            // Reset checkbox and button state for a fresh start
             acknowledgementCheckbox.checked = false;
             proceedButton.disabled = true;
-            console.log('DOMContentLoaded - Admin view enabled: Entry screen hidden, main content shown.');
+            console.log('DOMContentLoaded - Entry screen shown, all persistence removed.');
         });
 
         // Enable/disable proceed button based on checkbox
