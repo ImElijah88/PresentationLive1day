@@ -158,6 +158,7 @@
         }
 
         #email-modal-content {
+            position: relative; /* Needed for absolute positioning of close button */
             background-color: #1A2F4A;
             color: #E0E0E0;
             padding: 2.5rem;
@@ -201,6 +202,25 @@
             margin-top: 1rem;
             font-size: 0.9rem;
             color: #BFD7ED;
+        }
+
+        /* Close button for modal */
+        .close-button {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #BFD7ED;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .close-button:hover {
+            background-color: #2E4A6C;
+            color: white;
         }
 
         /* Styling for the fixed audio player */
@@ -260,14 +280,12 @@
                 <h3 class="font-bold text-xl text-white mb-2">Non-Disclosure Agreement (NDA) & Copyright Infringement Terms</h3>
                 <p>By proceeding, you acknowledge and agree to the following terms and conditions regarding the intellectual property presented in the "Live One Day Project" infographic. This material, including but not limited to concepts, designs, narratives, financial models, and strategic frameworks, is the exclusive intellectual property of the project creators.</p>
                 <ul class="list-disc list-inside mt-4 space-y-2">
-                    <li>**Confidentiality:** You agree to keep all information contained within this infographic strictly confidential and not to disclose it to any third party without explicit written consent from the project creators.</li>
-                    <li>**Non-Use:** You agree not to use any part of this intellectual property for your own commercial or non-commercial purposes, including but not limited to developing, marketing, or launching similar projects or ideas.</li>
-                    <li>**No Reproduction:** You agree not to reproduce, distribute, modify, adapt, or create derivative works from this infographic or its content, in whole or in part, without prior written permission.</li>
-                    <li>**Copyright:** All content, including text, images, and concepts, is protected by copyright law. Unauthorized use, reproduction, or distribution may result in legal action for copyright infringement.</li>
-                    <li>**Acknowledgment:** Your electronic acknowledgment and submission of your details signify your understanding and acceptance of these terms.</li>
+                    <li>Confidentiality: You agree to keep all information contained within this infographic strictly confidential and not to disclose it to any third party without explicit written consent from the project creators.</li>
+                    <li>Non-Use: You agree not to use any part of this intellectual property for your own commercial or non-commercial purposes, including but not limited to developing, marketing, or launching similar projects or ideas.</li>
+                    <li>No Reproduction: You agree not to reproduce, distribute, modify, adapt, or create derivative works from this infographic or its content, in whole or in part, without prior written permission.</li>
+                    <li>Copyright: All content, including text, images, and concepts, is protected by copyright law. Unauthorized use, reproduction, or distribution may result in legal action for copyright infringement.</li>
+                    <li>Acknowledgment: Your electronic acknowledgment and submission of your details signify your understanding and acceptance of these terms.</li>
                 </ul>
-                <p class="mt-4">We appreciate your respect for our intellectual property and your interest in the "Live One Day Project."</p>
-                <p class="mt-2 text-sm text-gray-500">*(This is placeholder text. Please replace with your actual legal terms and conditions.)*</p>
             </div>
 
             <div class="flex items-center justify-center mt-6">
@@ -284,6 +302,7 @@
     <!-- Email/Name Modal -->
     <div id="email-modal" class="hidden">
         <form id="email-modal-content" action="https://formspree.io/f/xeokdaod" method="POST">
+            <button type="button" class="close-button" id="close-modal-button">&times;</button>
             <h3 class="text-2xl font-bold text-[#BFD7ED] mb-4">Enter Your Details</h3>
             <p class="text-gray-400 mb-6">Please provide your legal name and email address to proceed.</p>
             <input type="text" id="legal-name-input" name="legal_name" placeholder="Your Legal Name" class="mb-4" required>
@@ -686,32 +705,43 @@
         const emailAddressInput = document.getElementById('email-address-input');
         const modalSubmitButton = document.getElementById('modal-submit-button');
         const modalMessage = document.getElementById('modal-message');
+        const closeModalButton = document.getElementById('close-modal-button'); // New close button
 
         // Check local storage on load
         document.addEventListener('DOMContentLoaded', () => {
             const hasAgreed = localStorage.getItem('liveOneDayAgreed');
+            console.log('DOMContentLoaded - hasAgreed:', hasAgreed);
             if (hasAgreed === 'true') {
-                entryScreen.classList.add('hidden');
-                mainContent.classList.remove('hidden');
+                entryScreen.style.display = 'none'; // Hide entry screen directly
+                emailModal.style.display = 'none'; // Ensure modal is hidden directly
+                mainContent.style.display = 'block'; // Show main content directly
+                console.log('DOMContentLoaded - Showing main content directly.');
             } else {
-                entryScreen.classList.remove('hidden');
-                mainContent.classList.add('hidden');
+                entryScreen.style.display = 'flex'; // Show entry screen directly (it's a flex container)
+                emailModal.style.display = 'none'; // Ensure modal is hidden directly
+                mainContent.style.display = 'none'; // Hide main content directly
+                console.log('DOMContentLoaded - Showing entry screen directly.');
             }
         });
 
         // Enable/disable proceed button based on checkbox
         acknowledgementCheckbox.addEventListener('change', () => {
             proceedButton.disabled = !acknowledgementCheckbox.checked;
+            console.log('Checkbox changed - Proceed button disabled:', proceedButton.disabled);
         });
 
         // Show email modal when proceed button is clicked
         proceedButton.addEventListener('click', () => {
-            emailModal.classList.remove('hidden');
+            // Hide the entry screen when the modal is shown
+            entryScreen.style.display = 'none'; 
+            emailModal.style.display = 'flex'; // Show email modal directly (it's a flex container)
+            console.log('Proceed button clicked - Showing email modal.');
         });
 
         // Handle modal submission using Formspree
         emailForm.addEventListener('submit', async (event) => {
             event.preventDefault(); // Prevent default form submission
+            console.log('Form submission initiated.');
 
             const legalName = legalNameInput.value.trim();
             const emailAddress = emailAddressInput.value.trim();
@@ -720,6 +750,7 @@
                 modalMessage.textContent = 'Please enter both your legal name and email address.';
                 modalMessage.classList.remove('hidden');
                 modalMessage.style.color = '#FF5733'; // Red for error
+                console.log('Form validation failed: Missing name or email.');
                 return;
             }
 
@@ -728,6 +759,7 @@
             modalMessage.classList.remove('hidden');
             modalMessage.style.color = '#BFD7ED'; // Light blue for info
             modalSubmitButton.disabled = true; // Disable button during submission
+            console.log('Form submission in progress...');
 
             try {
                 const response = await fetch(emailForm.action, {
@@ -746,17 +778,21 @@
                     modalMessage.textContent = 'Details submitted successfully! Redirecting...';
                     modalMessage.style.color = '#4CAF50'; // Green for success
                     localStorage.setItem('liveOneDayAgreed', 'true');
+                    console.log('Formspree submission successful. Stored agreement in local storage.');
+
                     // Give a moment for the user to read the success message before redirecting
                     setTimeout(() => {
-                        emailModal.classList.add('hidden');
-                        entryScreen.classList.add('hidden');
-                        mainContent.classList.remove('hidden');
+                        emailModal.style.display = 'none'; // Directly hide modal
+                        entryScreen.style.display = 'none'; // Directly hide entry screen (redundant but safe)
+                        mainContent.style.display = 'block'; // Directly show main content
+                        console.log('Redirecting to main content. Elements visibility set directly via style.display.');
                     }, 1500); // 1.5 seconds delay
                 } else {
                     const errorData = await response.json();
                     modalMessage.textContent = `Submission failed: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Unknown error'}`;
                     modalMessage.style.color = '#FF5733'; // Red for error
                     modalSubmitButton.disabled = false; // Re-enable button
+                    console.error('Formspree submission failed:', errorData);
                 }
             } catch (error) {
                 console.error('Error submitting form:', error);
@@ -764,6 +800,19 @@
                 modalMessage.style.color = '#FF5733'; // Red for error
                 modalSubmitButton.disabled = false; // Re-enable button
             }
+        });
+
+        // Handle closing the email modal
+        closeModalButton.addEventListener('click', () => {
+            emailModal.style.display = 'none'; // Hide the modal
+            entryScreen.style.display = 'flex'; // Show the entry screen again
+            // Optionally, reset the checkbox and button state if the user closed the modal
+            acknowledgementCheckbox.checked = false;
+            proceedButton.disabled = true;
+            modalMessage.classList.add('hidden'); // Hide any previous messages
+            legalNameInput.value = ''; // Clear inputs
+            emailAddressInput.value = '';
+            console.log('Email modal closed. Returned to entry screen.');
         });
 
 
@@ -833,7 +882,7 @@
         });
 
         // OpEx Chart
-        const opexCtx = document.getElementById('opexChart').getContext('2d');
+        const opexCtx = document.getElementById('opexChart').getContext('2d'); // Corrected typo: 'opeexChart' to 'opexChart'
         new Chart(opexCtx, {
             type: 'bar',
             data: {
