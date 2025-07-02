@@ -79,35 +79,230 @@
             color: gold; /* Golden color on hover */
             text-shadow: 0 0 8px rgba(255, 215, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.4); /* Glittering effect */
         }
+
+        /* Styles for the entry screen and modal */
+        #entry-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0A192F;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 1rem;
+            overflow-y: auto; /* Allow scrolling for long terms */
+        }
+
+        #entry-screen-content {
+            background-color: #1A2F4A;
+            color: #E0E0E0;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh; /* Limit height to allow scrolling */
+            overflow-y: auto;
+            border: 1px solid #2E4A6C;
+        }
+
+        #terms-text {
+            background-color: #0D1C2E;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #BFD7ED;
+            max-height: 40vh; /* Make terms scrollable if too long */
+            overflow-y: auto;
+            border: 1px solid #003B73;
+        }
+
+        #acknowledgement-checkbox {
+            margin-right: 0.5rem;
+            transform: scale(1.2); /* Slightly larger checkbox */
+        }
+
+        #proceed-button {
+            background-color: #003B73;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        #proceed-button:disabled {
+            background-color: #4A5568;
+            cursor: not-allowed;
+        }
+        #proceed-button:hover:not(:disabled) {
+            background-color: #0056B3;
+        }
+
+        #email-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001; /* Above entry screen */
+        }
+
+        #email-modal-content {
+            background-color: #1A2F4A;
+            color: #E0E0E0;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid #2E4A6C;
+        }
+
+        #email-modal-content input[type="text"],
+        #email-modal-content input[type="email"] {
+            width: calc(100% - 2rem); /* Adjust for padding */
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #003B73;
+            background-color: #0D1C2E;
+            color: #E0E0E0;
+            font-size: 1rem;
+        }
+        #email-modal-content input[type="text"]::placeholder,
+        #email-modal-content input[type="email"]::placeholder {
+            color: #9CA3AF;
+        }
+
+        #modal-submit-button {
+            background-color: #4CAF50; /* Green for success */
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        #modal-submit-button:hover {
+            background-color: #45A049;
+        }
+
+        #modal-message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #BFD7ED;
+        }
+
+        /* Styling for the fixed audio player */
+        .fixed-audio-player {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 999; /* Below entry screen and modal */
+            background-color: gold; /* Golden background for the player */
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 18rem; /* Fixed width */
+            max-width: 90%; /* Responsive max-width */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fixed-audio-player audio {
+            width: 100%;
+            background-color: transparent; /* Ensure player itself is transparent */
+        }
+        /* Styling for the audio player controls for a golden look */
+        .fixed-audio-player audio::-webkit-media-controls-panel {
+            background-color: gold;
+            border-radius: 0.5rem;
+        }
+        .fixed-audio-player audio::-webkit-media-controls-play-button,
+        .fixed-audio-player audio::-webkit-media-controls-current-time-display,
+        .fixed-audio-player audio::-webkit-media-controls-time-remaining-display,
+        .fixed-audio-player audio::-webkit-media-controls-timeline,
+        .fixed-audio-player audio::-webkit-media-controls-volume-slider,
+        .fixed-audio-player audio::-webkit-media-controls-mute-button {
+            color: #003B73; /* Dark blue controls */
+        }
+        .fixed-audio-player audio::-webkit-media-controls-timeline {
+            background-color: #BFD7ED; /* Light blue for timeline background */
+        }
+        .fixed-audio-player audio::-webkit-media-controls-play-button {
+            background-color: #003B73; /* Dark blue play button */
+            border-radius: 50%;
+        }
+        .fixed-audio-player audio::-webkit-media-controls-volume-slider {
+            background-color: #BFD7ED;
+        }
     </style>
 </head>
 <body class="bg-[#0A192F] text-[#E0E0E0]">
-    <header class="bg-[#003B73] text-white p-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-black tracking-tight">LIVE ONE DAY PROJECT</h1>
-        <p class="mt-2 text-lg md:text-xl text-[#BFD7ED]">Fostering Empathy Through Immersive Experiences</p>
-    </header>
 
-    <section class="container mx-auto p-4 md:p-8 text-center">
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-bold text-[#003B73] mb-4">Project Audio Overview</h2>
-            <audio controls class="w-full max-w-md mx-auto">
-                <source src="audio.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-            <p class="text-gray-600 mt-2 text-sm">Please ensure 'audio.mp3' is in the root of your GitHub repository.</p>
+    <!-- Entry Screen -->
+    <div id="entry-screen">
+        <div id="entry-screen-content">
+            <h2 class="text-3xl font-bold text-[#BFD7ED] mb-4 text-center">Important: Terms & Conditions for Access</h2>
+            <p class="text-gray-400 text-center mb-6">Please read and acknowledge the terms below to access the "Live One Day Project" infographic.</p>
+
+            <div id="terms-text">
+                <h3 class="font-bold text-xl text-white mb-2">Non-Disclosure Agreement (NDA) & Copyright Infringement Terms</h3>
+                <p>By proceeding, you acknowledge and agree to the following terms and conditions regarding the intellectual property presented in the "Live One Day Project" infographic. This material, including but not limited to concepts, designs, narratives, financial models, and strategic frameworks, is the exclusive intellectual property of the project creators.</p>
+                <ul class="list-disc list-inside mt-4 space-y-2">
+                    <li>**Confidentiality:** You agree to keep all information contained within this infographic strictly confidential and not to disclose it to any third party without explicit written consent from the project creators.</li>
+                    <li>**Non-Use:** You agree not to use any part of this intellectual property for your own commercial or non-commercial purposes, including but not limited to developing, marketing, or launching similar projects or ideas.</li>
+                    <li>**No Reproduction:** You agree not to reproduce, distribute, modify, adapt, or create derivative works from this infographic or its content, in whole or in part, without prior written permission.</li>
+                    <li>**Copyright:** All content, including text, images, and concepts, is protected by copyright law. Unauthorized use, reproduction, or distribution may result in legal action for copyright infringement.</li>
+                    <li>**Acknowledgment:** Your electronic acknowledgment and submission of your details signify your understanding and acceptance of these terms.</li>
+                </ul>
+                <p class="mt-4">We appreciate your respect for our intellectual property and your interest in the "Live One Day Project."</p>
+                <p class="mt-2 text-sm text-gray-500">*(This is placeholder text. Please replace with your actual legal terms and conditions.)*</p>
+            </div>
+
+            <div class="flex items-center justify-center mt-6">
+                <input type="checkbox" id="acknowledgement-checkbox" class="form-checkbox h-5 w-5 text-[#4CAF50] rounded focus:ring-[#4CAF50]">
+                <label for="acknowledgement-checkbox" class="text-lg text-white cursor-pointer">I have read and agree to the terms and conditions.</label>
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="proceed-button" class="cursor-pointer" disabled>Proceed to Infographic</button>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <main class="container mx-auto p-4 md:p-8">
-        <section class="mb-12">
+    <!-- Email/Name Modal -->
+    <div id="email-modal" class="hidden">
+        <form id="email-modal-content" action="https://formspree.io/f/xeokdaod" method="POST">
+            <h3 class="text-2xl font-bold text-[#BFD7ED] mb-4">Enter Your Details</h3>
+            <p class="text-gray-400 mb-6">Please provide your legal name and email address to proceed.</p>
+            <input type="text" id="legal-name-input" name="legal_name" placeholder="Your Legal Name" class="mb-4" required>
+            <input type="email" id="email-address-input" name="email_address" placeholder="Your Email Address" class="mb-6" required>
+            <button type="submit" id="modal-submit-button">Submit & Enter</button>
+            <p id="modal-message" class="hidden"></p>
+        </form>
+    </div>
+
+    <!-- Main Content (initially hidden) -->
+    <div id="main-content" class="hidden">
+        <header class="bg-[#003B73] text-white p-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight">LIVE ONE DAY PROJECT</h1>
+            <p class="mt-2 text-lg md:text-xl text-[#BFD7ED]">Fostering Empathy Through Immersive Experiences</p>
+        </header>
+
+        <section class="container mx-auto p-4 md:p-8">
             <div class="bg-white rounded-lg shadow-md p-6 mb-6">
                 <h2 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Project Overview: Core Mission</h2>
-                <div class="w-full max-w-md mx-auto rounded-lg my-4 overflow-hidden">
-                    <video controls autoplay muted playsinline class="w-full h-auto rounded-lg">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                        Your browser does not support the video tag. Please replace "https://www.w3schools.com/html/mov_bbb.mp4" with your actual video file URL if you have one.
-                    </video>
-                </div>
                 <p class="text-gray-600 text-center">"Live One Day" is a groundbreaking, multi-platform episodic video series dedicated to fostering authentic human connection and empathetic cultural understanding. It aims to transcend superficial travel content by capturing unscripted, genuine experiences, inspiring viewers to better themselves and the world around them.</p>
             </div>
 
@@ -471,7 +666,108 @@
         <p class="text-gray-600">This infographic provides a comprehensive overview of the "Live One Day" project.</p>
     </footer>
 
+    <!-- Fixed Audio Player -->
+    <div class="fixed-audio-player">
+        <audio controls class="w-full">
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
     <script>
+        // DOM Elements
+        const entryScreen = document.getElementById('entry-screen');
+        const mainContent = document.getElementById('main-content');
+        const acknowledgementCheckbox = document.getElementById('acknowledgement-checkbox');
+        const proceedButton = document.getElementById('proceed-button');
+        const emailModal = document.getElementById('email-modal');
+        const emailForm = document.getElementById('email-modal-content'); // Get the form element
+        const legalNameInput = document.getElementById('legal-name-input');
+        const emailAddressInput = document.getElementById('email-address-input');
+        const modalSubmitButton = document.getElementById('modal-submit-button');
+        const modalMessage = document.getElementById('modal-message');
+
+        // Check local storage on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasAgreed = localStorage.getItem('liveOneDayAgreed');
+            if (hasAgreed === 'true') {
+                entryScreen.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+            } else {
+                entryScreen.classList.remove('hidden');
+                mainContent.classList.add('hidden');
+            }
+        });
+
+        // Enable/disable proceed button based on checkbox
+        acknowledgementCheckbox.addEventListener('change', () => {
+            proceedButton.disabled = !acknowledgementCheckbox.checked;
+        });
+
+        // Show email modal when proceed button is clicked
+        proceedButton.addEventListener('click', () => {
+            emailModal.classList.remove('hidden');
+        });
+
+        // Handle modal submission using Formspree
+        emailForm.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const legalName = legalNameInput.value.trim();
+            const emailAddress = emailAddressInput.value.trim();
+
+            if (!legalName || !emailAddress) {
+                modalMessage.textContent = 'Please enter both your legal name and email address.';
+                modalMessage.classList.remove('hidden');
+                modalMessage.style.color = '#FF5733'; // Red for error
+                return;
+            }
+
+            // Show a loading message
+            modalMessage.textContent = 'Submitting...';
+            modalMessage.classList.remove('hidden');
+            modalMessage.style.color = '#BFD7ED'; // Light blue for info
+            modalSubmitButton.disabled = true; // Disable button during submission
+
+            try {
+                const response = await fetch(emailForm.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        legal_name: legalName,
+                        email_address: emailAddress
+                    })
+                });
+
+                if (response.ok) {
+                    modalMessage.textContent = 'Details submitted successfully! Redirecting...';
+                    modalMessage.style.color = '#4CAF50'; // Green for success
+                    localStorage.setItem('liveOneDayAgreed', 'true');
+                    // Give a moment for the user to read the success message before redirecting
+                    setTimeout(() => {
+                        emailModal.classList.add('hidden');
+                        entryScreen.classList.add('hidden');
+                        mainContent.classList.remove('hidden');
+                    }, 1500); // 1.5 seconds delay
+                } else {
+                    const errorData = await response.json();
+                    modalMessage.textContent = `Submission failed: ${errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Unknown error'}`;
+                    modalMessage.style.color = '#FF5733'; // Red for error
+                    modalSubmitButton.disabled = false; // Re-enable button
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                modalMessage.textContent = 'An error occurred during submission. Please try again.';
+                modalMessage.style.color = '#FF5733'; // Red for error
+                modalSubmitButton.disabled = false; // Re-enable button
+            }
+        });
+
+
+        // Chart.js functions (existing code)
         const wrapText = (str) => {
             if (str.length <= 16) {
                 return str;
