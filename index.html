@@ -72,12 +72,20 @@
 
         /* Hover effect for phase text */
         .phase-content-overlay {
-            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
         }
         .phase-box:hover .phase-content-overlay h3,
         .phase-box:hover .phase-content-overlay p {
             color: gold; /* Golden color on hover */
             text-shadow: 0 0 8px rgba(255, 215, 0, 0.7), 0 0 15px rgba(255, 215, 0, 0.4); /* Glittering effect */
+        }
+        /* New hover effect for the phase box itself */
+        .phase-box {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .phase-box:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
         }
 
         /* Styles for the entry screen and modal */
@@ -87,13 +95,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #0A192F;
-            display: flex;
+            background-image: url('image8.png'); /* Background image for entry screen */
+            background-size: cover;
+            background-position: center;
+            display: flex; /* Always show entry screen initially */
             justify-content: center;
             align-items: center;
             z-index: 1000;
             padding: 1rem;
             overflow-y: auto; /* Allow scrolling for long terms */
+        }
+        /* Overlay for entry screen background */
+        #entry-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: -1; /* Behind content */
         }
 
         #entry-screen-content {
@@ -150,11 +171,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
+            background-image: url('image8.png'); /* Background image for email modal */
+            background-size: cover;
+            background-position: center;
+            display: none; /* Hidden by default */
             justify-content: center;
             align-items: center;
             z-index: 1001; /* Above entry screen */
+        }
+        /* Overlay for email modal background */
+        #email-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for modal */
+            z-index: -1; /* Behind content */
         }
 
         #email-modal-content {
@@ -392,8 +426,7 @@
                 <h2 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Episode Journey: The 7 Phases of Production</h2>
                 <p class="text-gray-600 text-center mb-6">A single episode follows a distinct multi-phase journey, designed for rich storytelling and seamless sponsor integration.</p>
                 <div class="flex flex-col items-center">
-                    <!-- Phase 1 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase1.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+1:+Planning'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 1: Pre-Production & Planning</h3>
                             <p class="text-white text-sm mt-1">Engaging local guide/fixer (for Immersion Host identification, itinerary, local attire sourcing), finalizing Show Host agreement, preparing interview questions, and selecting a pre-prepared gift for the Immersion Host family.</p>
@@ -403,8 +436,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 2 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase2.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+2:+Arrival'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 2: Arrival & Show Host Lifestyle Vlog</h3>
                             <p class="text-white text-sm mt-1">Initial entry, settling in, and showcasing the Show Host's disciplined routines. This phase includes artfully filmed sequences of the Show Host's "getting ready" routine – perfect for integrated product placements.</p>
@@ -414,8 +446,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 3 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase3.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+3:+Interviews'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 3: Car Ride Interviews</h3>
                             <p class="text-white text-sm mt-1">Creating a "mobile studio" to capture the Immersion Host's life story. Traveling with the Immersion Host, conducting in-depth interviews. The guide may drive in some situations to allow the Show Host to focus on the interview.</p>
@@ -425,8 +456,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 4 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase4.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+4:+Immersion'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 4: 24 Hours Inside Their Shoes (Immersion)</h3>
                             <p class="text-white text-sm mt-1">The core, resource-less immersion experience. The Show Host wears only the locally-prepared attire, carries bare minimum hygiene essentials and sleepwear. The Show Host experiences the day as the local Immersion Host does, capturing interesting moments, aiming to inspire.</p>
@@ -436,8 +466,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 5 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase5.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+5:+Debrief'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 5: Post-Immersion Interview & Debrief</h3>
                             <p class="text-white text-sm mt-1">Immediate, raw reflection on the immersion. After being picked up by the guide, the Show Host returns to the hotel. A "fresh out of the oven" interview with the Show Host is filmed, capturing immediate thoughts and emotional takeaways. The Show Host expresses gratitude and potentially gives the pre-prepared gift to the Immersion Host family.</p>
@@ -447,8 +476,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 6 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('imagePhase6.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md mb-4 overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/1A2F4A/BFD7ED?text=Phase+6:+Post-Production'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 6: Post-Production & Workflow (Wife's Role)</h3>
                             <p class="text-white text-sm mt-1">Efficiently transforming raw footage into polished episodes for multi-platform deployment. Show Host uploads video to cloud storage. Wife uses high-performance laptop to edit and prepare content.</p>
@@ -458,8 +486,7 @@
                     <div class="flow-line"></div>
                     <div class="flow-arrow"></div>
 
-                    <!-- Phase 7 -->
-                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md overflow-hidden phase-box" style="background-image: url('imagePhase7.png'); background-size: cover; background-position: center;">
+                    <div class="relative w-full md:w-3/4 lg:w-2/3 h-48 md:h-64 rounded-lg shadow-md overflow-hidden phase-box" style="background-image: url('https://placehold.co/600x300/003B73/BFD7ED?text=Phase+7:+Departure'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-4 text-center phase-content-overlay">
                             <h3 class="font-bold text-lg text-white">Phase 7: Departure & Ongoing Guide Relationship</h3>
                             <p class="text-white text-sm mt-1">Concluding the visit, preparing for the next journey, and strengthening bonds with the local guide, who may travel with the team to the next destination.</p>
@@ -470,7 +497,7 @@
         </section>
 
         <section class="mb-12">
-            <div class="bg-[#0D1C2E] rounded-lg shadow-xl p-6 text-white">
+            <div class="bg-[#0D1C2E] rounded-lg shadow-xl p-6 text-white border border-[#2E4A6C]">
                 <h2 class="text-2xl font-bold text-[#4CAF50] mb-6 text-center">Key Resources & Equipment: High-Tech Infrastructure</h2>
                 <p class="text-gray-300 text-center mb-8">A streamlined overview of the critical gear and services powering the project's success, presented as a sophisticated operational framework.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -558,127 +585,6 @@
             </div>
         </section>
 
-        <section class="mb-12">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-2xl font-bold text-[#003B73] mb-4 text-center">Financial Outlook: Cost Estimates</h2>
-                <p class="text-gray-600 text-center mb-6">Understanding the estimated capital and operational expenditures is crucial for project planning and sustainability. These are ground estimates and highly variable.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-xl text-[#FFC300] mb-2">Estimated One-Time Capital Expenditures (CapEx)</h3>
-                        <p class="text-gray-700 mb-4">These are the initial setup costs for essential equipment and luxury items.</p>
-                        <div class="chart-container">
-                            <canvas id="capexChart"></canvas>
-                        </div>
-                        <p class="text-gray-600 text-center mt-4">Total Estimated Initial CapEx: <span class="font-bold text-[#C70039]">$7,200 - $22,500+</span></p>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl text-[#FFC300] mb-2">Estimated Per-Episode Operating Expenses (OpEx)</h3>
-                        <p class="text-gray-700 mb-4">These are recurring costs for each episode produced, covering local support, travel, and production consumables.</p>
-                        <div class="chart-container">
-                            <canvas id="opexChart"></canvas>
-                        </div>
-                        <p class="text-gray-600 text-center mt-4">Total Estimated Per-Episode OpEx: <span class="font-bold text-[#C70039]">$2,545 - $11,180+</span></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mb-12">
-            <div class="bg-[#0D1C2E] rounded-lg shadow-xl p-6 text-white border border-[#2E4A6C]">
-                <h2 class="text-2xl font-bold text-[#4CAF50] mb-6 text-center">Legal & Contractual Framework: Immutable Protocols</h2>
-                <p class="text-gray-300 text-center mb-8">Establishing robust legal agreements is paramount for safeguarding intellectual property, ensuring ethical compliance, and facilitating seamless global operations.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-bold text-xl text-[#66B3FF] mb-4 border-b border-[#2E4A6C] pb-2">Mandatory Contractual Instruments</h3>
-                        <ul class="list-none text-gray-300 space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">📜</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Participant/Immersion Host Agreement & Release</h4>
-                                    <p class="text-sm text-gray-400">Ensures explicit consent for filming, likeness utilization, and defines ethical compensation for all featured individuals.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🤝</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Local Fixer/Guide Engagement Protocol</h4>
-                                    <p class="text-sm text-gray-400">Formalizes scope of services, remuneration terms, and intellectual property assignment for local support personnel.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">👨‍💻</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Core Team Member Accords</h4>
-                                    <p class="text-sm text-gray-400">Defines roles, compensation structures, and 'Work for Hire' clauses for all production personnel, including the Show Host and Production Partner.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">💰</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Strategic Partnership & Sponsorship Mandate</h4>
-                                    <p class="text-sm text-gray-400">Outlines deliverables, financial agreements, and brand integration approval rights with commercial collaborators.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">📍</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Location Authorization Forms</h4>
-                                    <p class="text-sm text-gray-400">Secures necessary permissions for filming on private or restricted properties beyond the Immersion Host's domicile.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🎵</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Audio & Music Licensing Accords</h4>
-                                    <p class="text-sm text-gray-400">Ensures legal utilization of all background audio and musical compositions within the episodic content.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-xl text-[#66B3FF] mb-4 border-b border-[#2E4A6C] pb-2">Critical Compliance Directives</h3>
-                        <ul class="list-none text-gray-300 space-y-3">
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🔒</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Intellectual Property Safeguards</h4>
-                                    <p class="text-sm text-gray-400">Ensuring exclusive ownership of all generated footage, narratives, and derivative content.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">✅</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Universal Consent & Release Protocols</h4>
-                                    <p class="text-sm text-gray-400">Mandatory acquisition of explicit consent from all identifiable individuals, with heightened scrutiny for minors.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🛡️</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Data Confidentiality & Privacy Mandates</h4>
-                                    <p class="text-sm text-gray-400">Strict adherence to global data protection regulations for all sensitive information acquired.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">🌐</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Jurisdictional Compliance & Regulatory Adherence</h4>
-                                    <p class="text-sm text-gray-400">Full compliance with local filming permits, visa stipulations, and cultural sensitivity guidelines across all operational territories.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-3xl text-[#4CAF50] mr-3 pulsating-icon">💼</span>
-                                <div>
-                                    <h4 class="font-semibold text-lg text-white">Comprehensive Risk Mitigation & Insurance</h4>
-                                    <p class="text-sm text-gray-400">Securing robust production and travel insurance policies to mitigate unforeseen liabilities.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer class="text-center p-4 mt-8 bg-gray-200">
@@ -707,21 +613,15 @@
         const modalMessage = document.getElementById('modal-message');
         const closeModalButton = document.getElementById('close-modal-button'); // New close button
 
-        // Check local storage on load
+        // On page load, always show the entry screen first
         document.addEventListener('DOMContentLoaded', () => {
-            const hasAgreed = localStorage.getItem('liveOneDayAgreed');
-            console.log('DOMContentLoaded - hasAgreed:', hasAgreed);
-            if (hasAgreed === 'true') {
-                entryScreen.style.display = 'none'; // Hide entry screen directly
-                emailModal.style.display = 'none'; // Ensure modal is hidden directly
-                mainContent.style.display = 'block'; // Show main content directly
-                console.log('DOMContentLoaded - Showing main content directly.');
-            } else {
-                entryScreen.style.display = 'flex'; // Show entry screen directly (it's a flex container)
-                emailModal.style.display = 'none'; // Ensure modal is hidden directly
-                mainContent.style.display = 'none'; // Hide main content directly
-                console.log('DOMContentLoaded - Showing entry screen directly.');
-            }
+            entryScreen.style.display = 'flex'; // Ensure entry screen is visible
+            emailModal.style.display = 'none'; // Ensure modal is hidden
+            mainContent.style.display = 'none'; // Ensure main content is hidden
+            // Reset checkbox and button state for a fresh start
+            acknowledgementCheckbox.checked = false;
+            proceedButton.disabled = true;
+            console.log('DOMContentLoaded - Entry screen shown, all persistence removed.');
         });
 
         // Enable/disable proceed button based on checkbox
@@ -732,9 +632,8 @@
 
         // Show email modal when proceed button is clicked
         proceedButton.addEventListener('click', () => {
-            // Hide the entry screen when the modal is shown
             entryScreen.style.display = 'none'; 
-            emailModal.style.display = 'flex'; // Show email modal directly (it's a flex container)
+            emailModal.style.display = 'flex'; // Show email modal
             console.log('Proceed button clicked - Showing email modal.');
         });
 
@@ -777,14 +676,15 @@
                 if (response.ok) {
                     modalMessage.textContent = 'Details submitted successfully! Redirecting...';
                     modalMessage.style.color = '#4CAF50'; // Green for success
-                    localStorage.setItem('liveOneDayAgreed', 'true');
-                    console.log('Formspree submission successful. Stored agreement in local storage.');
+                    // IMPORTANT: No localStorage.setItem('liveOneDayAgreed', 'true'); here
+                    // This ensures the user logs in again on refresh/new page load.
+                    console.log('Formspree submission successful. No persistence stored.');
 
                     // Give a moment for the user to read the success message before redirecting
                     setTimeout(() => {
-                        emailModal.style.display = 'none'; // Directly hide modal
-                        entryScreen.style.display = 'none'; // Directly hide entry screen (redundant but safe)
-                        mainContent.style.display = 'block'; // Directly show main content
+                        emailModal.style.display = 'none'; 
+                        entryScreen.style.display = 'none'; 
+                        mainContent.style.display = 'block'; 
                         console.log('Redirecting to main content. Elements visibility set directly via style.display.');
                     }, 1500); // 1.5 seconds delay
                 } else {
@@ -806,7 +706,7 @@
         closeModalButton.addEventListener('click', () => {
             emailModal.style.display = 'none'; // Hide the modal
             entryScreen.style.display = 'flex'; // Show the entry screen again
-            // Optionally, reset the checkbox and button state if the user closed the modal
+            // Reset the checkbox and button state when returning to entry screen
             acknowledgementCheckbox.checked = false;
             proceedButton.disabled = true;
             modalMessage.classList.add('hidden'); // Hide any previous messages
